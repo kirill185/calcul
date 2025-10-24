@@ -1,0 +1,14 @@
+C:\Users\Student\source\repos\Cucl\Cucl\bin\Debug\net8.0\Cucl.exe
+C:\Users\Student\source\repos\Cucl\Cucl\bin\Debug\net8.0\Cucl.deps.json
+C:\Users\Student\source\repos\Cucl\Cucl\bin\Debug\net8.0\Cucl.runtimeconfig.json
+C:\Users\Student\source\repos\Cucl\Cucl\bin\Debug\net8.0\Cucl.dll
+C:\Users\Student\source\repos\Cucl\Cucl\bin\Debug\net8.0\Cucl.pdb
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.AssemblyInfo.cs
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.dll
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\refint\Cucl.dll
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.pdb
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\Cucl.genruntimeconfig.cache
+C:\Users\Student\source\repos\Cucl\Cucl\obj\Debug\net8.0\ref\Cucl.dll
