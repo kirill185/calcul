@@ -1,42 +1,30 @@
-﻿using System;
-using System.Drawing;
+﻿using Calculator;
+using Cucl;
+using System;
 
-class Program
+namespace Calculator
 {
-    static void Main()
+    class Program
     {
-        IMathOperation[] operations = {
-            new SquareRoot(),
-            new Sine(),
-            new Cosine(),
-            new Tangent(),
-            new Square()
-        };
-
-        Console.WriteLine("КАЛЬКУЛЯТОР");
-
-        while (true)
+        static void Main(string[] args)
         {
-            Console.Write("\nЧисло: ");
-            string input = Console.ReadLine();
+            IMathOperation calc1 = new MathOperation();
+           
+      
+  
 
-            if (input == "q") break;
+            Console.Write("Введите первое число: ");
+            double number1 = Convert.ToSingle(Console.ReadLine());
+            Console.Write("Введите Второе число: ");
+            double number2 = Convert.ToSingle(Console.ReadLine());
 
-            if (double.TryParse(input, out double number))
-            {
-                Console.WriteLine($"--- {number} ---");
 
-                foreach (var operation in operations)
-                {
-                    double result = operation.Calculate(number);
-                    string output = double.IsNaN(result) ? "ошибка" : $"{result:0.####}";
-                    Console.WriteLine($"{operation.GetName()}: {output}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Ошибка ввода");
-            }
+            Console.WriteLine( "Сумма ваших чисел: " + calc1.add(number1, number2));
+            Console.WriteLine( "Вычетание чисел: " + calc1.subtract(number1, number2));
+            Console.WriteLine( "Вычетание чисел: " + calc1.multiply(number1, number2));
+            Console.WriteLine( "Вычетание чисел: " + calc1.divide(number1, number2));
+
+
         }
     }
 }
