@@ -1,6 +1,4 @@
 ﻿using Calculator;
-using Cucl;
-
 using System;
 
 
@@ -35,16 +33,16 @@ namespace Calculator
                         Console.WriteLine("Деление: " + calc1.divide(number1, number2));
                         break;
                     case "SquareRoot":
-                        Console.WriteLine("Квадратный корень" + cacl2.SquareRoot(number1));
+                        Console.WriteLine("Квадратный корень: " + cacl2.SquareRoot(number1));
                         break;
                     case "Sine":
-                        Console.WriteLine("Синус" + cacl2.sine(number1));
+                        Console.WriteLine("Синус: " + cacl2.sine(number1));
                         break;
                     case "Cosine":
-                        Console.WriteLine("Косинус" + cacl2.cosine(number1));
+                        Console.WriteLine("Косинус: " + cacl2.cosine(number1));
                         break;
                     case "Square":
-                        Console.WriteLine("Квадрат числа" + cacl2.Square(number1));
+                        Console.WriteLine("Квадрат числа: " + cacl2.Square(number1));
                         break;
 
                 }

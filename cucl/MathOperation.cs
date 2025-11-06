@@ -1,15 +1,12 @@
 ﻿using Calculator;
-using Calculator;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Cucl
+
+namespace Calculator
+
 {
     public class MathOperation : IMathOperation, IMathHard
+
+
     {
         public double add(double number1, double number2) { return number1 + number2; }
         public double subtract(double number1, double number2) { return number1 - number2; }
@@ -18,6 +15,7 @@ namespace Cucl
         public double SquareRoot(double number1)
         {
             if (number1 < 0) return double.NaN;
+
             double result = number1;
             for (int i = 0; i < 10; i++) result = (result + number1 / result) / 2;
             return result;
@@ -49,6 +47,11 @@ namespace Cucl
         public double Square(double number1)
         {
             return number1 * number1;
+        }
+
+        public double mod(double number1, double number2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
