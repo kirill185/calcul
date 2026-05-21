@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор CSS градиентов - Презентация</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .presentation {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: none;
+            padding: 50px 80px;
+            overflow-y: auto;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide h1 {
+            font-size: 56px;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .slide h2 {
+            font-size: 36px;
+            color: #4a5568;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .slide h3 {
+            font-size: 28px;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .slide p, .slide li {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+
+        .slide ul, .slide ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        .slide li {
+            margin: 10px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 16px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        .nav-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        @media print {
+            .nav-controls, .slide-number {
+                display: none;
+            }
+            .slide {
+                position: relative;
+                display: block !important;
+                page-break-after: always;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+        <!-- СЛАЙД 2 - ЦЕЛЬ И ЗАДАЧИ -->
+        <div class="slide">
+            <h2>🎯 Цель и задачи проекта</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Цель</h3>
+                    <p>Создать визуальный редактор для генерации CSS градиентов с возможностью экспорта в PNG</p>
+                </div>
+                <div class="card">
+                    <h3>Актуальность</h3>
+                    <p>Веб-разработчики часто используют градиенты, но писать CSS вручную - трудоемко. Генератор ускоряет процесс.</p>
+                </div>
+            </div>
+            <h3>Задачи</h3>
+            <ul>
+                <li>✅ Разработать визуальный редактор градиента</li>
+                <li>✅ Реализовать добавление/удаление цветовых остановок</li>
+                <li>✅ Сделать автоматическую генерацию CSS кода</li>
+                <li>✅ Добавить экспорт градиента в PNG</li>
+                <li>✅ Написать тесты с покрытием 80%+ кода</li>
+            </ul>
+        </div>
+
+        <!-- СЛАЙД 3 - ТЕХНОЛОГИИ -->
+        <div class="slide">
+            <h2>🛠️ Используемые технологии</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Язык и платформа</h3>
+                    <p>✔️ C# (.NET Framework 4.7.2+)</p>
+                    <p>✔️ Windows Forms</p>
+                    <p>✔️ GDI+ (графика)</p>
+                </div>
+                <div class="card">
+                    <h3>Библиотеки</h3>
+                    <p>✔️ System.Drawing</p>
+                    <p>✔️ System.Drawing.Drawing2D</p>
+                    <p>✔️ System.Drawing.Imaging</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Структура приложения</h3>
+                <div class="code-block">
+                    CssGradientGenerator/<br>
+                    ├── Form1.cs          # Главное окно (логика + UI)<br>
+                    ├── ColorStop         # Класс цветовой остановки<br>
+                    ├── GradientData      # Класс данных градиента<br>
+                    └── Тесты             # 24 автотеста (85% покрытия)
+                </div>
+            </div>
+        </div>
+
+        <!-- СЛАЙД 4 - АРХИТЕКТУРА -->
+        <div class="slide">
+            <h2>🏗️ Архитектура приложения</h2>
+            <div class="code-block">
+                📦 Класс ColorStop<br>
+                ├── Color Color { get; set; }      // RGB + Alpha<br>
+                ├── double Position { get; set; }  // 0% - 100%<br>
+                └── ToString()                     // "Red (255,0,0) - 50%"<br>
+                <br>
+                📦 Класс GradientData<br>
+                ├── GradientType Type              // Linear / Radial<br>
+                ├── double Angle                   // 0-360°<br>
+                ├── List&lt;ColorStop&gt; Stops         // Список остановок<br>
+                ├── AddStop()                      // Добавить цвет<br>
+                ├── RemoveStop()                   // Удалить цвет<br>
+                ├── SortStops()                    // Сортировка<br>
+                └── GenerateCSS()                  // Генерация CSS<br>
+                <br>
+                🖥️ Класс Form1 (UI)<br>
+                ├── Отрисовка градиента<br>
+                ├── Обработка событий<br>
+                ├── Экспорт в PNG<br>
+                └── Запуск тестов
+            </div>
+        </div>
+
+        <!-- СЛАЙД 5 - ФУНКЦИОНАЛ -->
+        <div class="slide">
+            <h2>⚡ Функциональные возможности</h2>
+            <table>
+                <tr><th>Функция</th><th>Описание</th></tr>
+                <tr><td>👁️ Предпросмотр</td><td>Живое отображение градиента</td></tr>
+                <tr><td>🎨 Добавление цвета</td><td>Выбор из палитры Windows</td></tr>
+                <tr><td>🗑️ Удаление цвета</td><td>Защита от удаления последних 2 цветов</td></tr>
+                <tr><td>🔄 Сортировка</td><td>Автоматическая по позиции (0-100%)</td></tr>
+                <tr><td>📐 Линейный/Радиальный</td><td>Переключение типа</td></tr>
+                <tr><td>📝 Генерация CSS</td><td>Автоматический код для вставки</td></tr>
+                <tr><td>📸 Экспорт в PNG</td><td>Сохранение с CSS подписью</td></tr>
+                <tr><td>🧪 Тестирование</td><td>24 теста с покрытием 85%</td></tr>
+            </table>
+        </div>
+
+        <!-- СЛАЙД 6 - ИНТЕРФЕЙС -->
+        
+
+        <!-- СЛАЙД 7 - ПРИМЕРЫ CSS -->
+        <div class="slide">
+            <h2>📝 Генерация CSS кода</h2>
+            <h3>Линейный градиент</h3>
+            <div class="code-block">
+background: linear-gradient(135deg, rgba(255,0,0,1) 0%, rgba(0,0,255,1) 100%);
+            </div>
+            <h3>Радиальный градиент</h3>
+            <div class="code-block">
+background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 50%, rgba(0,0,255,1) 100%);
+            </div>
+            <h3>С множеством остановок</h3>
+            <div class="code-block">
+background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 30%, rgba(0,255,0,1) 60%, rgba(0,0,255,1) 100%);
+            </div>
+        </div>
+
+        <!-- СЛАЙД 8 - ТЕСТИРОВАНИЕ -->
+        <div class="slide">
+            <h2>🧪 Тестирование приложения</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Группы тестов</h3>
+                    <p>✔️ ColorStop (5 тестов) - 100%</p>
+                    <p>✔️ GradientData (6 тестов) - 95%</p>
+                    <p>✔️ Генерация CSS (5 тестов) - 90%</p>
+                    <p>✔️ Граничные условия (4 теста) - 85%</p>
+                    <p>✔️ Сортировка (4 теста) - 80%</p>
+                </div>
+                <div class="card">
+                    <h3>Результаты</h3>
+                    <p>📊 Всего тестов: <strong>24</strong></p>
+                    <p>✅ Пройдено: <strong>24</strong></p>
+                    <p>📈 Покрытие кода: <strong>85%</strong></p>
+                    <p>🎯 Статус: <span class="badge">ВСЕ ТЕСТЫ ПРОЙДЕНЫ</span></p>
+                </div>
+            </div>
+            <h3>Пример теста</h3>
+            <div class="code-block">
+// Тест границ позиций
+ColorStop stop = new ColorStop(Color.Red, 150);
+// Позиция автоматически становится 100
+if (stop.Position == 100) ✅
+            </div>
+        </div>
+
+        <!-- СЛАЙД 9 - ЭКСПОРТ В PNG -->
+        <div class="slide">
+            <h2>📸 Экспорт в PNG</h2>
+            <div class="code-block">
+private void ExportToPNG()
+{
+    SaveFileDialog sfd = new SaveFileDialog();
+    sfd.Filter = "PNG файлы|*.png";
+    
+    if (sfd.ShowDialog() == DialogResult.OK)
+    {
+        Bitmap bmp = new Bitmap(800, 400);
+        using (Graphics g = Graphics.FromImage(bmp))
+        {
+            DrawGradientToGraphics(g, new Rectangle(0, 0, 800, 400));
+            g.DrawString(currentGradient.GenerateCSS(), 
+                new Font("Consolas", 10), Brushes.Black, 10, 10);
+        }
+        bmp.Save(sfd.FileName, ImageFormat.Png);
+    }
+}
+            </div>
+            <p>📏 Размер: 800×400 пикселей</p>
+            <p>📦 Формат: PNG</p>
+            <p>📝 Содержит: градиент + CSS код на изображении</p>
+        </div>
+
+        <!-- СЛАЙД 10 - РЕЗУЛЬТАТЫ -->
+        <div class="slide">
+            <h2>📊 Результаты работы</h2>
+            <table>
+                <tr><th>Показатель</th><th>Значение</th></tr>
+                <tr><td>Строк кода</td><td>~500</td></tr>
+                <tr><td>Классов</td><td>4</td></tr>
+                <tr><td>Методов</td><td>25+</td></tr>
+                <tr><td>Тестов</td><td>24 (85% покрытия)</td></tr>
+                <tr><td>Основной функционал</td><td>8 пунктов</td></tr>
+                <tr><td>Время разработки</td><td>~22 часа</td></tr>
+            </table>
+            <div class="card" style="margin-top: 20px;">
+                <h3>Достигнутые результаты</h3>
+                <p>✅ Полностью рабочий генератор градиентов</p>
+                <p>✅ Интуитивно понятный интерфейс</p>
+                <p>✅ Высокое покрытие тестами (85%)</p>
+                <p>✅ Экспорт в PNG с CSS подписью</p>
+                <p>✅ Готовый CSS код для веб-разработки</p>
+            </div>
+        </div>
+
+        <!-- СЛАЙД 11 - ДАЛЬНЕЙШЕЕ РАЗВИТИЕ -->
+        <div class="slide">
+            <h2>🚀 Планы по улучшению</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Высокий приоритет</h3>
+                    <p>🔄 Drag-and-drop остановок</p>
+                    <p>📋 Копирование CSS в буфер</p>
+                    <p>💾 Сохранение/загрузка проектов</p>
+                </div>
+                <div class="card">
+                    <h3>Средний приоритет</h3>
+                    <p>🎨 Пресеты готовых градиентов</p>
+                    <p>📐 Превью с текстом</p>
+                    <p>🌙 Тёмная тема интерфейса</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Низкий приоритет</h3>
+                <p>🌐 Веб-версия на Blazor</p>
+                <p>⌨️ Горячие клавиши (Ctrl+C для CSS)</p>
+                <p>📱 Адаптация под мобильные устройства</p>
+            </div>
+        </div>
+
+        <!-- СЛАЙД 12 - ЧЕМУ НАУЧИЛСЯ -->
+        <div class="slide">
+            <h2>📚 Что я узнал/научился</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Технические навыки</h3>
+                    <p>🎨 GDI+ графика (LinearGradientBrush, PathGradientBrush)</p>
+                    <p>🧪 Написание юнит-тестов</p>
+                    <p>🖥️ Windows Forms (создание UI в коде)</p>
+                    <p>📐 ООП на C#</p>
+                </div>
+                <div class="card">
+                    <h3>Soft skills</h3>
+                    <p>🐛 Отладка и исправление багов</p>
+                    <p>📄 Документирование кода</p>
+                    <p>⏱️ Планирование времени</p>
+                    <p>🎤 Подготовка к защите</p>
+                </div>
+            </div>
+           
+            </div>
+        </div>
+
+        <!-- СЛАЙД 13 - ЗАКЛЮЧЕНИЕ -->
+        <div class="slide">
+            <h2>🎯 Заключение</h2>
+            <div class="card" style="margin: 30px 0;">
+                <h3>Итоговая оценка</h3>
+                <table style="width: 80%; margin: 0 auto;">
+                    <tr><td>Функциональность</td><td>⭐⭐⭐⭐⭐ (5/5)</td></tr>
+                    <tr><td>Качество кода</td><td>⭐⭐⭐⭐☆ (4/5)</td></tr>
+                    <tr><td>Тестирование</td><td>⭐⭐⭐⭐⭐ (5/5)</td></tr>
+                    <tr><td>Документация</td><td>⭐⭐⭐⭐☆ (4/5)</td></tr>
+                </table>
+            </div>
+            <h3>Вывод</h3>
+            <p>Разработанный генератор CSS градиентов полностью соответствует поставленным задачам. Программа готова к использованию, протестирована и может быть применена в веб-разработке.</p>
+        </div>
+
+        <!-- СЛАЙД 14 - СПАСИБО -->
+        <div class="slide">
+            <h1 style="margin-top: 150px;">ПАСИБА</h1>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn">◀ Назад</button>
+        <button class="nav-btn" id="nextBtn">Вперед ▶</button>
+    </div>
+    <div class="slide-number" id="slideNumber">1 / 15</div>
+
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        let totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slideNumber').innerText = (currentSlide + 1) + ' / ' + totalSlides;
+        }
+
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        showSlide(0);
+    </script>
+</body>
+</html>
